@@ -45,7 +45,7 @@ namespace QL_Diem.Forms
 
         private void qUaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fBangDiem f = new fBangDiem();
+            fQLDiem f = new fQLDiem();
             this.Hide();
             f.ShowDialog();
             this.Show();

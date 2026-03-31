@@ -16,6 +16,6 @@ namespace QL_DiemTruongTieuHoc.Data
         public int KhoiLop { get; set; } // Thuộc khối 1, 2, 3, 4, 5
         public bool TrangThai { get; set; } // Còn đang giảng dạy hay không [cite: 42]
         // Quan hệ 1-N với bảng điểm
-        public virtual ICollection<BangDiem> BangDiems { get; set; }
+        public virtual ICollection<QLDiem> BangDiems { get; set; }
     }
 }

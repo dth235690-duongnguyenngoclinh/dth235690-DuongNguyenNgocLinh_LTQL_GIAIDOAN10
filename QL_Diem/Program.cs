@@ -17,7 +17,8 @@ namespace QL_Diem
             //Application.Run(new fTaiKhoan());
             //Application.Run(new fHocSinh());
             //Application.Run(new fMonHoc());
-            Application.Run(new fLop());
+            //Application.Run(new fLop());
+            Application.Run(new fQLDiem());
 
         }
     }

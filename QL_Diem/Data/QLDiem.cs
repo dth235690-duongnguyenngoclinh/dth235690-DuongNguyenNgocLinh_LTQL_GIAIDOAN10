@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QL_DiemTruongTieuHoc.Data
 {
-    public class BangDiem
+    public class QLDiem
     {
         public int ID { get; set; }
 

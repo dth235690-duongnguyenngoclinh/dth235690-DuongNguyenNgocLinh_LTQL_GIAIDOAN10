@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QL_Diem.Forms
 {
-    public partial class fBangDiem : Form
+    public partial class fBangDiemHS : Form
     {
-        public fBangDiem()
+        public fBangDiemHS()
         {
             InitializeComponent();
         }

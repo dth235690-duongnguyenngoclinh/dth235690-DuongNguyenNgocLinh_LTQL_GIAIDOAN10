@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnO = new Button();
             dtpkNamHoc = new DateTimePicker();
             label6 = new Label();
             cmbGVCN = new ComboBox();
@@ -62,6 +63,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnO);
             panel1.Controls.Add(dtpkNamHoc);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(cmbGVCN);
@@ -85,13 +87,23 @@
             panel1.Size = new Size(680, 167);
             panel1.TabIndex = 0;
             // 
+            // btnO
+            // 
+            btnO.Location = new Point(539, 121);
+            btnO.Name = "btnO";
+            btnO.Size = new Size(35, 27);
+            btnO.TabIndex = 24;
+            btnO.Text = "O";
+            btnO.UseVisualStyleBackColor = true;
+            btnO.Click += btnO_Click;
+            // 
             // dtpkNamHoc
             // 
             dtpkNamHoc.Format = DateTimePickerFormat.Short;
             dtpkNamHoc.Location = new Point(403, 77);
             dtpkNamHoc.Name = "dtpkNamHoc";
             dtpkNamHoc.Size = new Size(143, 27);
-            dtpkNamHoc.TabIndex = 24;
+            dtpkNamHoc.TabIndex = 5;
             // 
             // label6
             // 
@@ -145,7 +157,7 @@
             btnThoat.Location = new Point(358, 121);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(74, 30);
-            btnThoat.TabIndex = 8;
+            btnThoat.TabIndex = 9;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
             btnThoat.Click += btnThoat_Click;
@@ -156,7 +168,7 @@
             btnLamMoi.Location = new Point(438, 121);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(86, 30);
-            btnLamMoi.TabIndex = 9;
+            btnLamMoi.TabIndex = 10;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
             btnLamMoi.Click += btnLamMoi_Click;
@@ -167,7 +179,7 @@
             btnXoa.Location = new Point(278, 121);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(74, 30);
-            btnXoa.TabIndex = 7;
+            btnXoa.TabIndex = 8;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -178,7 +190,7 @@
             btnSua.Location = new Point(198, 121);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(74, 30);
-            btnSua.TabIndex = 6;
+            btnSua.TabIndex = 7;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
@@ -189,7 +201,7 @@
             btnThem.Location = new Point(118, 121);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(74, 30);
-            btnThem.TabIndex = 5;
+            btnThem.TabIndex = 6;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -276,6 +288,7 @@
             dgvLop.Size = new Size(680, 329);
             dgvLop.TabIndex = 2;
             dgvLop.TabStop = false;
+            dgvLop.CellClick += dgvLop_CellClick;
             // 
             // ID
             // 
@@ -311,7 +324,7 @@
             GiaoVienChuNhiem.MinimumWidth = 6;
             GiaoVienChuNhiem.Name = "GiaoVienChuNhiem";
             GiaoVienChuNhiem.ReadOnly = true;
-            GiaoVienChuNhiem.Width = 400;
+            GiaoVienChuNhiem.Width = 300;
             // 
             // SoLuong
             // 
@@ -373,6 +386,7 @@
         private ComboBox cmbGVCN;
         private Label label6;
         private DateTimePicker dtpkNamHoc;
+        private Button btnO;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn MaLop;
         private DataGridViewTextBoxColumn TenLop;

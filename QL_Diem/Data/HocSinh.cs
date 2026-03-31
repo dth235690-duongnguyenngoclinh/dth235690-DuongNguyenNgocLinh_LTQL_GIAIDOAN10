@@ -21,6 +21,6 @@ namespace QL_Diem.Data
         public virtual Lop Lop { get; set; }
         public string TrangThai { get; set; } // Đang học, Nghỉ học...
         // Quan hệ 1 học sinh có nhiều bảng điểm
-        public virtual ICollection<BangDiem> BangDiems { get; set; }
+        public virtual ICollection<QLDiem> BangDiems { get; set; }
     }
 }

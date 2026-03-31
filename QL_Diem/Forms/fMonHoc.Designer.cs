@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnO = new Button();
             cmbLoaiMon = new ComboBox();
             numSoTiet = new NumericUpDown();
             btnThoat = new Button();
@@ -50,22 +51,23 @@
             txtID = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
-            dgvLop = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
+            dgvMonHoc = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            MaMon = new DataGridViewTextBoxColumn();
+            TenMon = new DataGridViewTextBoxColumn();
+            LoaiMon = new DataGridViewTextBoxColumn();
+            TrangThai = new DataGridViewTextBoxColumn();
+            KhoiLop = new DataGridViewTextBoxColumn();
+            SoTiet = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoTiet).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvLop).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMonHoc).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnO);
             panel1.Controls.Add(cmbLoaiMon);
             panel1.Controls.Add(numSoTiet);
             panel1.Controls.Add(btnThoat);
@@ -92,6 +94,16 @@
             panel1.Size = new Size(760, 146);
             panel1.TabIndex = 0;
             // 
+            // btnO
+            // 
+            btnO.Location = new Point(127, 98);
+            btnO.Name = "btnO";
+            btnO.Size = new Size(35, 27);
+            btnO.TabIndex = 46;
+            btnO.Text = "O";
+            btnO.UseVisualStyleBackColor = true;
+            btnO.Click += btnO_Click;
+            // 
             // cmbLoaiMon
             // 
             cmbLoaiMon.FormattingEnabled = true;
@@ -117,6 +129,7 @@
             btnThoat.TabIndex = 11;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnLamMoi
             // 
@@ -127,6 +140,7 @@
             btnLamMoi.TabIndex = 12;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXoa
             // 
@@ -137,6 +151,7 @@
             btnXoa.TabIndex = 10;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
@@ -147,6 +162,7 @@
             btnSua.TabIndex = 9;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -157,6 +173,7 @@
             btnThem.TabIndex = 8;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // label10
             // 
@@ -287,88 +304,96 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(dgvLop);
+            panel2.Controls.Add(dgvMonHoc);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 146);
             panel2.Name = "panel2";
             panel2.Size = new Size(760, 408);
             panel2.TabIndex = 1;
             // 
-            // dgvLop
+            // dgvMonHoc
             // 
-            dgvLop.AllowUserToAddRows = false;
-            dgvLop.AllowUserToDeleteRows = false;
-            dgvLop.ColumnHeadersHeight = 29;
-            dgvLop.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column6, Column9, Column5, Column4 });
-            dgvLop.Dock = DockStyle.Fill;
-            dgvLop.Location = new Point(0, 0);
-            dgvLop.Margin = new Padding(4);
-            dgvLop.MultiSelect = false;
-            dgvLop.Name = "dgvLop";
-            dgvLop.ReadOnly = true;
-            dgvLop.RowHeadersVisible = false;
-            dgvLop.RowHeadersWidth = 51;
-            dgvLop.RowTemplate.Height = 30;
-            dgvLop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLop.Size = new Size(760, 408);
-            dgvLop.TabIndex = 3;
-            dgvLop.TabStop = false;
+            dgvMonHoc.AllowUserToAddRows = false;
+            dgvMonHoc.AllowUserToDeleteRows = false;
+            dgvMonHoc.ColumnHeadersHeight = 29;
+            dgvMonHoc.Columns.AddRange(new DataGridViewColumn[] { ID, MaMon, TenMon, LoaiMon, TrangThai, KhoiLop, SoTiet });
+            dgvMonHoc.Dock = DockStyle.Fill;
+            dgvMonHoc.Location = new Point(0, 0);
+            dgvMonHoc.Margin = new Padding(4);
+            dgvMonHoc.MultiSelect = false;
+            dgvMonHoc.Name = "dgvMonHoc";
+            dgvMonHoc.ReadOnly = true;
+            dgvMonHoc.RowHeadersVisible = false;
+            dgvMonHoc.RowHeadersWidth = 51;
+            dgvMonHoc.RowTemplate.Height = 30;
+            dgvMonHoc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMonHoc.Size = new Size(760, 408);
+            dgvMonHoc.TabIndex = 3;
+            dgvMonHoc.TabStop = false;
+            dgvMonHoc.CellClick += dgvMonHoc_CellClick;
             // 
-            // Column1
+            // ID
             // 
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 75;
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 75;
             // 
-            // Column2
+            // MaMon
             // 
-            Column2.HeaderText = "MÃ MÔN";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 140;
+            MaMon.DataPropertyName = "MaMon";
+            MaMon.HeaderText = "MÃ MÔN";
+            MaMon.MinimumWidth = 6;
+            MaMon.Name = "MaMon";
+            MaMon.ReadOnly = true;
+            MaMon.Width = 125;
             // 
-            // Column3
+            // TenMon
             // 
-            Column3.HeaderText = "TÊN MÔN";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 130;
+            TenMon.DataPropertyName = "TenMon";
+            TenMon.HeaderText = "TÊN MÔN";
+            TenMon.MinimumWidth = 6;
+            TenMon.Name = "TenMon";
+            TenMon.ReadOnly = true;
+            TenMon.Width = 125;
             // 
-            // Column6
+            // LoaiMon
             // 
-            Column6.HeaderText = "TRẠNG THÁI";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
-            Column6.Width = 125;
+            LoaiMon.DataPropertyName = "LoaiMon";
+            LoaiMon.HeaderText = "LOẠI MÔN";
+            LoaiMon.MinimumWidth = 6;
+            LoaiMon.Name = "LoaiMon";
+            LoaiMon.ReadOnly = true;
+            LoaiMon.Width = 150;
             // 
-            // Column9
+            // TrangThai
             // 
-            Column9.HeaderText = "LOẠI MÔN";
-            Column9.MinimumWidth = 6;
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            Column9.Width = 150;
+            TrangThai.DataPropertyName = "TrangThai";
+            TrangThai.HeaderText = "TRẠNG THÁI";
+            TrangThai.MinimumWidth = 6;
+            TrangThai.Name = "TrangThai";
+            TrangThai.ReadOnly = true;
+            TrangThai.Width = 125;
             // 
-            // Column5
+            // KhoiLop
             // 
-            Column5.HeaderText = "KHỐI LỚP";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
-            Column5.Width = 125;
+            KhoiLop.DataPropertyName = "KhoiLop";
+            KhoiLop.HeaderText = "KHỐI LỚP";
+            KhoiLop.MinimumWidth = 6;
+            KhoiLop.Name = "KhoiLop";
+            KhoiLop.ReadOnly = true;
+            KhoiLop.Width = 125;
             // 
-            // Column4
+            // SoTiet
             // 
-            Column4.HeaderText = "SỐ TIẾT";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            Column4.Width = 130;
+            SoTiet.DataPropertyName = "SoTiet";
+            SoTiet.HeaderText = "SỐ TIẾT";
+            SoTiet.MinimumWidth = 6;
+            SoTiet.Name = "SoTiet";
+            SoTiet.ReadOnly = true;
+            SoTiet.Width = 130;
             // 
             // fMonHoc
             // 
@@ -382,11 +407,12 @@
             Name = "fMonHoc";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fMonHoc";
+            Load += fMonHoc_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numSoTiet).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvLop).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMonHoc).EndInit();
             ResumeLayout(false);
         }
 
@@ -414,13 +440,14 @@
         private Label label1;
         private NumericUpDown numSoTiet;
         private ComboBox cmbLoaiMon;
-        private DataGridView dgvLop;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column4;
+        private DataGridView dgvMonHoc;
+        private Button btnO;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn MaMon;
+        private DataGridViewTextBoxColumn TenMon;
+        private DataGridViewTextBoxColumn LoaiMon;
+        private DataGridViewTextBoxColumn TrangThai;
+        private DataGridViewTextBoxColumn KhoiLop;
+        private DataGridViewTextBoxColumn SoTiet;
     }
 }
