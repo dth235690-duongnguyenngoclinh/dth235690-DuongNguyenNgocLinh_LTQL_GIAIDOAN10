@@ -87,7 +87,6 @@
             txtLoaiTaiKhoan.Name = "txtLoaiTaiKhoan";
             txtLoaiTaiKhoan.Size = new Size(225, 27);
             txtLoaiTaiKhoan.TabIndex = 9;
-            txtLoaiTaiKhoan.UseSystemPasswordChar = true;
             // 
             // label1
             // 

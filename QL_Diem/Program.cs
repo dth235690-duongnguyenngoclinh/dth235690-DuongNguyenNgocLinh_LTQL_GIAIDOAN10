@@ -19,7 +19,7 @@ namespace QL_Diem
             //Application.Run(new fMonHoc());
             //Application.Run(new fLop());
             //Application.Run(new fQLDiem());
-
+            
         }
     }
 }

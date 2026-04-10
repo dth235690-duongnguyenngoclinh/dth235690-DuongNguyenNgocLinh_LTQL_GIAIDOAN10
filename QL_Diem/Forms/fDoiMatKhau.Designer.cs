@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             btnCapNhat = new Button();
-            txtMatKhau = new TextBox();
-            txtTenDangNhap = new TextBox();
+            txtMatKhauMoi = new TextBox();
+            txtMatKhauCu = new TextBox();
             label3 = new Label();
             label2 = new Label();
             SuspendLayout();
@@ -47,24 +47,24 @@
             btnCapNhat.UseVisualStyleBackColor = true;
             btnCapNhat.Click += btnCapNhat_Click;
             // 
-            // txtMatKhau
+            // txtMatKhauMoi
             // 
-            txtMatKhau.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtMatKhau.Location = new Point(23, 104);
-            txtMatKhau.MaxLength = 255;
-            txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(276, 27);
-            txtMatKhau.TabIndex = 1;
-            txtMatKhau.UseSystemPasswordChar = true;
+            txtMatKhauMoi.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtMatKhauMoi.Location = new Point(23, 104);
+            txtMatKhauMoi.MaxLength = 255;
+            txtMatKhauMoi.Name = "txtMatKhauMoi";
+            txtMatKhauMoi.Size = new Size(276, 27);
+            txtMatKhauMoi.TabIndex = 1;
+            txtMatKhauMoi.UseSystemPasswordChar = true;
             // 
-            // txtTenDangNhap
+            // txtMatKhauCu
             // 
-            txtTenDangNhap.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTenDangNhap.Location = new Point(23, 32);
-            txtTenDangNhap.MaxLength = 255;
-            txtTenDangNhap.Name = "txtTenDangNhap";
-            txtTenDangNhap.Size = new Size(276, 27);
-            txtTenDangNhap.TabIndex = 3;
+            txtMatKhauCu.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtMatKhauCu.Location = new Point(23, 32);
+            txtMatKhauCu.MaxLength = 255;
+            txtMatKhauCu.Name = "txtMatKhauCu";
+            txtMatKhauCu.Size = new Size(276, 27);
+            txtMatKhauCu.TabIndex = 0;
             // 
             // label3
             // 
@@ -93,8 +93,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(312, 201);
             Controls.Add(btnCapNhat);
-            Controls.Add(txtMatKhau);
-            Controls.Add(txtTenDangNhap);
+            Controls.Add(txtMatKhauMoi);
+            Controls.Add(txtMatKhauCu);
             Controls.Add(label3);
             Controls.Add(label2);
             Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -108,8 +108,8 @@
         #endregion
 
         private Button btnCapNhat;
-        private TextBox txtMatKhau;
-        private TextBox txtTenDangNhap;
+        private TextBox txtMatKhauMoi;
+        private TextBox txtMatKhauCu;
         private Label label3;
         private Label label2;
     }

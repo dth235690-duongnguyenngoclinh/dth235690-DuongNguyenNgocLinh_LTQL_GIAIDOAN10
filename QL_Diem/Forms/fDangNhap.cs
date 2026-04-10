@@ -40,11 +40,9 @@ namespace QL_Diem.Forms
 
                     if (user != null)
                     {
-                        // ĐĂNG NHẬP THÀNH CÔNG
                         MessageBox.Show($"Chào mừng {user.LoaiTaiKhoan}: {user.TenDangNhap}!", "Thành công");
-
-                        // Mở Form tiếp theo (fHocSinh)
-                        fHocSinh f = new fHocSinh();
+                        // TRUYỀN CẢ 2: TenDangNhap và LoaiTaiKhoan vào ngoặc
+                        fHocSinh f = new fHocSinh(user.TenDangNhap, user.LoaiTaiKhoan);
                         this.Hide();
                         f.ShowDialog();
                         this.Show();

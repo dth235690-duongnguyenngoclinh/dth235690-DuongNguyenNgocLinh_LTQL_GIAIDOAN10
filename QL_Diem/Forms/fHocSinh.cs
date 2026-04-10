@@ -19,6 +19,17 @@ namespace QL_Diem.Forms
             InitializeComponent();
         }
 
+        private string _tenDN;
+        private string _loaiTK; // Thêm dòng này
+
+        // Sửa Constructor để nhận thêm loại tài khoản
+        public fHocSinh(string tenDangNhap, string loaiTaiKhoan)
+        {
+            InitializeComponent();
+            this._tenDN = tenDangNhap;
+            this._loaiTK = loaiTaiKhoan; // Gán giá trị
+        }
+
         private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fTaiKhoan f = new fTaiKhoan();
@@ -62,24 +73,41 @@ namespace QL_Diem.Forms
             {
                 using (var db = new QLDiemDbContext())
                 {
+                    // Chúng ta dùng 'Select' để chỉ lấy những thông tin cần thiết 
+                    // y như cách em làm bên Form MonHoc
                     var data = db.HocSinhs.Select(h => new
                     {
                         h.ID,
-                        h.MaHocSinh,
-                        h.HoTen,
-                        h.GioiTinh,
-                        h.Lop,
-                        h.NgaySinh,
-                        h.DiaChi
+                        MaHocSinh = h.MaHocSinh,
+                        HoTen = h.HoTen,
+                        GioiTinh = h.GioiTinh,
+                        // Chỗ này quan trọng: Chỉ lấy TÊN LỚP, không lấy cả object Lop
+                        TenLop = h.Lop != null ? h.Lop.TenLop : "Chưa xếp",
+                        NgaySinh = h.NgaySinh,
+                        DiaChi = h.DiaChi
                     }).ToList();
 
-                    dgvHocSinh.DataSource = null;
                     dgvHocSinh.DataSource = data;
+
+                    // Đặt tên tiêu đề cột cho chuyên nghiệp
+                    if (dgvHocSinh.Columns.Count > 0)
+                    {
+                        dgvHocSinh.Columns["ID"].HeaderText = "ID";
+                        dgvHocSinh.Columns["MaHocSinh"].HeaderText = "MÃ HỌC SINH";
+                        dgvHocSinh.Columns["HoTen"].HeaderText = "TÊN HỌC SINH";
+                        dgvHocSinh.Columns["GioiTinh"].HeaderText = "GIỚI TÍNH";
+                        dgvHocSinh.Columns["TenLop"].HeaderText = "LỚP";
+                        dgvHocSinh.Columns["NgaySinh"].HeaderText = "NGÀY SINH";
+                        dgvHocSinh.Columns["DiaChi"].HeaderText = "ĐỊA CHỈ";
+
+                        // Tự động giãn cách các cột cho vừa khung hình (Y hệt Form MonHoc)
+                        dgvHocSinh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
+                MessageBox.Show("Lỗi tải dữ liệu học sinh: " + ex.Message);
             }
         }
 
@@ -188,26 +216,49 @@ namespace QL_Diem.Forms
             if (e.RowIndex >= 0 && dgvHocSinh.CurrentRow != null)
             {
                 var r = dgvHocSinh.CurrentRow;
-                txtID.Text = r.Cells["ID"].Value.ToString();
-                txtMaHocSinh.Text = r.Cells["MaHocSinh"].Value.ToString();
-                txtTHoTen.Text = r.Cells["HoTen"].Value.ToString();
-                dtpkNgaySinh.Value = Convert.ToDateTime(r.Cells["NgaySinh"].Value);
-                txtDiaChi.Text = r.Cells["DiaChi"].Value?.ToString();
-                txtSoDienThoaiPhuHuynh.Text = r.Cells["SoDienThoaiPhuHuynh"].Value?.ToString();
 
-                if (r.Cells["GioiTinh"].Value.ToString() == "Nam") rdNam.Checked = true;
+                // Lấy dữ liệu dựa theo tên cột mình đã đặt ở hàm LoadData
+                txtID.Text = r.Cells["ID"].Value?.ToString();
+                txtMaHocSinh.Text = r.Cells["MaHocSinh"].Value?.ToString();
+                txtTHoTen.Text = r.Cells["HoTen"].Value?.ToString();
+                txtDiaChi.Text = r.Cells["DiaChi"].Value?.ToString();
+
+                // Xử lý RadioButton giới tính
+                string gioiTinh = r.Cells["GioiTinh"].Value?.ToString();
+                if (gioiTinh == "Nam") rdNam.Checked = true;
                 else rdNu.Checked = true;
+
+                // Xử lý ngày sinh
+                if (r.Cells["NgaySinh"].Value != null)
+                {
+                    dtpkNgaySinh.Value = Convert.ToDateTime(r.Cells["NgaySinh"].Value);
+                }
+
+                // Hiện tên lớp lên ComboBox hoặc TextBox lớp
+                txtLopHoc.Text = r.Cells["TenLop"].Value?.ToString();
             }
         }
 
         private void thôngTinChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new fThongTinChiTiet().ShowDialog();
+            new fThongTinChiTiet(this._tenDN, this._loaiTK).ShowDialog();
         }
 
         private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new fDoiMatKhau().ShowDialog();
+            fDoiMatKhau f = new fDoiMatKhau(this._tenDN);
+            f.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hỏi xác nhận trước khi thoát cho chắc chắn
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

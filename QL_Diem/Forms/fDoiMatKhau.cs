@@ -13,11 +13,13 @@ namespace QL_Diem.Forms
 {
     public partial class fDoiMatKhau : Form
     {
-        public fDoiMatKhau()
+        private string _tenDangNhapHienTai;
+        
+        public fDoiMatKhau(string tenDN)
         {
             InitializeComponent();
+            this._tenDangNhapHienTai = tenDN; // Gán giá trị được truyền vào cho biến bên trên
         }
-
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             string matKhauCu = txtMatKhauCu.Text.Trim();
