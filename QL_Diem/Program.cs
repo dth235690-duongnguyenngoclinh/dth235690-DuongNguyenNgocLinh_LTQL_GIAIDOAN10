@@ -18,8 +18,10 @@ namespace QL_Diem
             //Application.Run(new fHocSinh());
             //Application.Run(new fMonHoc());
             //Application.Run(new fLop());
-            Application.Run(new fQLDiem());
-            
+            //Application.Run(new fQLDiem());
+            //Application.Run(new QL_Diem.Reports.fThongKeHocSinh());
+            Application.Run(new QL_Diem.Reports.fThongKeLop());
+
         }
     }
 }
