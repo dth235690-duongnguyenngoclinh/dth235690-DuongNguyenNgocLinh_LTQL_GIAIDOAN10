@@ -48,7 +48,6 @@
             TenDangNhap = new DataGridViewTextBoxColumn();
             MatKhau = new DataGridViewTextBoxColumn();
             LoaiTaiKhoan = new DataGridViewTextBoxColumn();
-            btnO = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTaiKhoan).BeginInit();
@@ -56,7 +55,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnO);
             panel1.Controls.Add(cmbLoaiTaiKhoan);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(btnThoat);
@@ -271,16 +269,6 @@
             LoaiTaiKhoan.ReadOnly = true;
             LoaiTaiKhoan.Width = 200;
             // 
-            // btnO
-            // 
-            btnO.Location = new Point(184, 77);
-            btnO.Name = "btnO";
-            btnO.Size = new Size(35, 27);
-            btnO.TabIndex = 9;
-            btnO.Text = "O";
-            btnO.UseVisualStyleBackColor = true;
-            btnO.Click += btnO_Click;
-            // 
             // fTaiKhoan
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
@@ -323,6 +311,5 @@
         private DataGridViewTextBoxColumn TenDangNhap;
         private DataGridViewTextBoxColumn MatKhau;
         private DataGridViewTextBoxColumn LoaiTaiKhoan;
-        private Button btnO;
     }
 }

@@ -35,13 +35,23 @@ namespace QL_Diem.Forms
             {
                 using (var db = new QLDiemDbContext())
                 {
-                    // 3. Tìm tài khoản khớp cả Tên và Pass trong Database
-                    var user = db.TaiKhoans.FirstOrDefault(x => x.TenDangNhap == tenDN && x.MatKhau == matKhau);
 
-                    if (user != null)
+                    // Lấy tất cả tài khoản ra bộ nhớ
+                    var users = db.TaiKhoans.AsEnumerable();
+
+                    // So sánh tên đăng nhập phân biệt hoa thường
+                    var user = users.FirstOrDefault(x => x.TenDangNhap.Equals(tenDN, StringComparison.Ordinal));
+
+                    if (user == null)
+                    {
+                        MessageBox.Show("Tên đăng nhập không tồn tại!", "Lỗi");
+                        return;
+                    }
+
+                    // Kiểm tra mật khẩu (phân biệt hoa thường)
+                    if (user.MatKhau.Equals(matKhau, StringComparison.Ordinal))
                     {
                         MessageBox.Show($"Chào mừng {user.LoaiTaiKhoan}: {user.TenDangNhap}!", "Thành công");
-                        // TRUYỀN CẢ 2: TenDangNhap và LoaiTaiKhoan vào ngoặc
                         fHocSinh f = new fHocSinh(user.TenDangNhap, user.LoaiTaiKhoan);
                         this.Hide();
                         f.ShowDialog();
@@ -49,8 +59,7 @@ namespace QL_Diem.Forms
                     }
                     else
                     {
-                        // ĐĂNG NHẬP THẤT BẠI
-                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi");
+                        MessageBox.Show("Mật khẩu không đúng!", "Lỗi");
                         txtMatKhau.Clear();
                         txtMatKhau.Focus();
                     }

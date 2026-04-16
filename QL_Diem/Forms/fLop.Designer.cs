@@ -35,7 +35,6 @@
             txtKhoiLop = new TextBox();
             label7 = new Label();
             txtNamHoc = new TextBox();
-            btnO = new Button();
             label6 = new Label();
             cmbGiaoVienChuNhiem = new ComboBox();
             label5 = new Label();
@@ -77,7 +76,6 @@
             panel1.Controls.Add(txtKhoiLop);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(txtNamHoc);
-            panel1.Controls.Add(btnO);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(cmbGiaoVienChuNhiem);
             panel1.Controls.Add(label5);
@@ -153,16 +151,6 @@
             txtNamHoc.Name = "txtNamHoc";
             txtNamHoc.Size = new Size(132, 27);
             txtNamHoc.TabIndex = 6;
-            // 
-            // btnO
-            // 
-            btnO.Location = new Point(628, 119);
-            btnO.Name = "btnO";
-            btnO.Size = new Size(35, 27);
-            btnO.TabIndex = 14;
-            btnO.Text = "O";
-            btnO.UseVisualStyleBackColor = true;
-            btnO.Click += btnO_Click;
             // 
             // label6
             // 
@@ -471,7 +459,6 @@
         private Label label5;
         private ComboBox cmbGiaoVienChuNhiem;
         private Label label6;
-        private Button btnO;
         private TextBox txtNamHoc;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn MaLop;

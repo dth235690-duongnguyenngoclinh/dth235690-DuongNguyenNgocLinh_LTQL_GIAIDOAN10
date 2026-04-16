@@ -41,7 +41,6 @@
             panel1 = new Panel();
             chbNghiHoc = new CheckBox();
             chbDangHoc = new CheckBox();
-            btnO = new Button();
             cmbGiaoVienChuNhiem = new ComboBox();
             txtNamHoc = new TextBox();
             btnThoat = new Button();
@@ -165,7 +164,6 @@
             // 
             panel1.Controls.Add(chbNghiHoc);
             panel1.Controls.Add(chbDangHoc);
-            panel1.Controls.Add(btnO);
             panel1.Controls.Add(cmbGiaoVienChuNhiem);
             panel1.Controls.Add(txtNamHoc);
             panel1.Controls.Add(btnThoat);
@@ -219,16 +217,6 @@
             chbDangHoc.Text = "Đang học";
             chbDangHoc.UseVisualStyleBackColor = true;
             chbDangHoc.CheckedChanged += chbDangHoc_CheckedChanged;
-            // 
-            // btnO
-            // 
-            btnO.Location = new Point(1022, 109);
-            btnO.Name = "btnO";
-            btnO.Size = new Size(35, 27);
-            btnO.TabIndex = 16;
-            btnO.Text = "O";
-            btnO.UseVisualStyleBackColor = true;
-            btnO.Click += btnO_Click;
             // 
             // cmbGiaoVienChuNhiem
             // 
@@ -678,7 +666,6 @@
         private ToolStripMenuItem quảnLýTàiKhoảnToolStripMenuItem;
         private TextBox txtNamHoc;
         private ComboBox cmbGiaoVienChuNhiem;
-        private Button btnO;
         private CheckBox chbNghiHoc;
         private CheckBox chbDangHoc;
         private DataGridViewTextBoxColumn ID;

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnO = new Button();
             cmbLoaiMon = new ComboBox();
             numSoTiet = new NumericUpDown();
             btnThoat = new Button();
@@ -67,7 +66,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnO);
             panel1.Controls.Add(cmbLoaiMon);
             panel1.Controls.Add(numSoTiet);
             panel1.Controls.Add(btnThoat);
@@ -93,16 +91,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(760, 146);
             panel1.TabIndex = 0;
-            // 
-            // btnO
-            // 
-            btnO.Location = new Point(127, 98);
-            btnO.Name = "btnO";
-            btnO.Size = new Size(35, 27);
-            btnO.TabIndex = 46;
-            btnO.Text = "O";
-            btnO.UseVisualStyleBackColor = true;
-            btnO.Click += btnO_Click;
             // 
             // cmbLoaiMon
             // 
@@ -441,7 +429,6 @@
         private NumericUpDown numSoTiet;
         private ComboBox cmbLoaiMon;
         private DataGridView dgvMonHoc;
-        private Button btnO;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn MaMon;
         private DataGridViewTextBoxColumn TenMon;

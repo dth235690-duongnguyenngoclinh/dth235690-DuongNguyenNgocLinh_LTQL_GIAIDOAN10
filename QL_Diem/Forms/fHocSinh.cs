@@ -29,7 +29,24 @@ namespace QL_Diem.Forms
             InitializeComponent();
             this._tenDN = tenDangNhap;
             this._loaiTK = loaiTaiKhoan; // Gán giá trị
+            PhanQuyen(); //gọi hàm phân quyền ngay khi form đc tạo
         }
+        private void PhanQuyen()
+        {
+            if (_loaiTK.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+            {
+                quảnLýTàiKhoảnToolStripMenuItem.Enabled = true;
+                thôngTinChiTiếtToolStripMenuItem.Enabled = true;
+            }
+            else if (_loaiTK.Equals("GiaoVien", StringComparison.OrdinalIgnoreCase))
+            {
+                quảnLýTàiKhoảnToolStripMenuItem.Visible = false;
+                thôngTinChiTiếtToolStripMenuItem.Visible = false;
+            }
+
+
+        }
+
         private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fTaiKhoan f = new fTaiKhoan();
@@ -182,6 +199,7 @@ namespace QL_Diem.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
